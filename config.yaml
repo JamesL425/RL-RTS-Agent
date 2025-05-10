@@ -1,0 +1,26 @@
+grid_size: 5
+max_steps: 40
+num_agents: 2     # agents per team (same for Blue and Red)
+num_gold: 3        # how many gold pieces spawn each episode
+
+num_envs: 8
+steps_per_update: 128
+total_updates: 3000
+
+save_interval: 300
+pool_size: 10
+
+gamma: 0.99
+lambda: 0.95
+clip_eps: 0.2
+entropy_coef: 0.01
+value_coef: 0.5
+ppo_epochs: 4
+mini_batch_size: 64
+learning_rate: 0.0001
+
+log_interval: 100
+device: cuda         # 'cuda' or 'cpu'
+
+blue_save_path: blue_final.pth 
+red_save_path: policy_pool/red_final.pth # snapshots land here
