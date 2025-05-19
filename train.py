@@ -13,8 +13,14 @@ from policy  import ActorCritic
 
 def make_env(G, N, K, max_steps):
     def _init():
-        return GoldRushEnv(grid_size=G, num_agents=N, num_gold=K,
-                           max_steps=max_steps, render_mode=None, red_policy=None)
+        return GoldRushEnv(
+            grid_size=G,
+            num_agents=N,
+            num_gold=K,
+            max_steps=max_steps,
+            render_mode=None,
+            opponent_policy=None,
+        )
     return _init
 
 
@@ -67,7 +73,7 @@ def main(cfg_path: str):
             net.load_state_dict(random.choice(pool))
             net.eval()
             reds.append(net)
-        envs.set_attr("red_policy", reds)
+        envs.set_attr("opponent_policy", reds)
 
         o_buf, a_buf, lp_buf, v_buf, r_buf, d_buf = [], [], [], [], [], []
 
